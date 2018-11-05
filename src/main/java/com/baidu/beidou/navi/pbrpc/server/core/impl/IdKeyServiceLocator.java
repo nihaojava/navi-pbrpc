@@ -57,10 +57,10 @@ public class IdKeyServiceLocator implements ServiceLocator<Integer> {
      */
     @Override
     public boolean regiserService(Integer key, Object serviceBean) {
-        Method[] ms = ReflectionUtil.getAllInstanceMethods(serviceBean.getClass());
+        Method[] ms = ReflectionUtil.getAllInstanceMethods(serviceBean.getClass()); // 获取serviceBean的所有methods
         int incr = 0;
         for (Method m : ms) {
-            if (methodResolver.isSupport(m)) {
+            if (methodResolver.isSupport(m)) {//判断是否可以暴露为方法
                 ServiceDescriptor<Integer> desc = new ServiceDescriptor<Integer>();
                 desc.setServiceId(key).setMethod(m).setTarget(serviceBean)
                         .setArgumentClass(m.getParameterTypes()[0])

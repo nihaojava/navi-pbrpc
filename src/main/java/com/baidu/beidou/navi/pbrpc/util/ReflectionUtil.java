@@ -27,7 +27,7 @@ public class ReflectionUtil {
         List<Method> methods = new ArrayList<Method>();
         for (Class<?> itr = clazz; hasSuperClass(itr);) {
             for (Method method : itr.getDeclaredMethods()) {
-                if (!Modifier.isStatic(method.getModifiers())) {
+                if (!Modifier.isStatic(method.getModifiers())) {  // why don`t add static method ?
                     methods.add(method);
                 }
             }

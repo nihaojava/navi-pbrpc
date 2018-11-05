@@ -30,7 +30,7 @@ public class PbrpcMessageDeserializer extends ByteToMessageDecoder {
             return;
         }
 
-        in.markReaderIndex();
+        in.markReaderIndex();// 给当前位置做标记 set mark，重置时用https://www.cnblogs.com/ruber/p/6857159.html
 
         byte[] bytes = new byte[NsHead.NSHEAD_LEN];
         in.readBytes(bytes, 0, NsHead.NSHEAD_LEN);

@@ -97,12 +97,12 @@ public class PbrpcServer {
         }
         this.port = port;
 
-        bootstrap = new ServerBootstrap();
-        bossGroup = new NioEventLoopGroup();
-        workerGroup = new NioEventLoopGroup();
+        bootstrap = new ServerBootstrap();  //辅助类启动器
+        bossGroup = new NioEventLoopGroup(); //对应reactor线程模型中的 mainReactor ( acceptor线程组)
+        workerGroup = new NioEventLoopGroup(); //对应reactor线程模型中的 subReactor（ NIO的I/O线程组）
 
-        bootstrap.channel(NioServerSocketChannel.class);
-        bootstrap.option(ChannelOption.SO_BACKLOG, pbrpcServerConfiguration.getSoBacklog());
+        bootstrap.channel(NioServerSocketChannel.class); //设置channel为NIO
+        bootstrap.option(ChannelOption.SO_BACKLOG, pbrpcServerConfiguration.getSoBacklog()); //设置channel的参数，以下都是
 
         bootstrap.childOption(ChannelOption.SO_KEEPALIVE, pbrpcServerConfiguration.isSoKeepalive());
         bootstrap.childOption(ChannelOption.TCP_NODELAY, pbrpcServerConfiguration.isTcpNodelay());
