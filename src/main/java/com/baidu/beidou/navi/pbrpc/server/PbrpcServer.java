@@ -102,7 +102,7 @@ public class PbrpcServer {
         workerGroup = new NioEventLoopGroup(); //对应reactor线程模型中的 subReactor（ NIO的I/O线程组）
 
         bootstrap.channel(NioServerSocketChannel.class); //设置channel为NIO
-        bootstrap.option(ChannelOption.SO_BACKLOG, pbrpcServerConfiguration.getSoBacklog()); //设置channel的参数，以下都是
+        bootstrap.option(ChannelOption.SO_BACKLOG, pbrpcServerConfiguration.getSoBacklog()); //设置channel的参数,以下都是
 
         bootstrap.childOption(ChannelOption.SO_KEEPALIVE, pbrpcServerConfiguration.isSoKeepalive());
         bootstrap.childOption(ChannelOption.TCP_NODELAY, pbrpcServerConfiguration.isTcpNodelay());
